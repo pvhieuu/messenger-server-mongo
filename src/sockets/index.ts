@@ -3,7 +3,10 @@ import { Server as HttpServer } from 'http'
 
 export const sockets = (server: HttpServer) => {
   const io = new Server(server, {
-    cors: {},
+    cors: {
+      origin: 'https://messenger-web-mongo.vercel.app',
+      methods: ['GET', 'POST', 'PUT', 'PATCH'],
+    },
   })
 
   io.on('connection', (socket) => {

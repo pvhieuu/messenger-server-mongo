@@ -4,7 +4,10 @@ exports.sockets = void 0;
 const socket_io_1 = require("socket.io");
 const sockets = (server) => {
     const io = new socket_io_1.Server(server, {
-        cors: {},
+        cors: {
+            origin: 'https://messenger-web-mongo.vercel.app',
+            methods: ['GET', 'POST', 'PUT', 'PATCH'],
+        },
     });
     io.on('connection', (socket) => {
         console.log(`a user connected ${socket.id}`);
